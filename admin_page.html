@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('psl.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9); /* semi-transparent white background for container */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #82db0d;
+        }
+        .btn:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <button class="btn" onclick="window.location.href='insert_admin.html'">Insert New Admin</button>
+        <button class="btn" onclick="window.location.href='updatepage.html'">Update Dashboard</button>
+        <button class="btn" onclick="window.location.href='insert_player.html'">Insert New Player</button>
+        <!-- <button class="btn" onclick="window.location.href='change_password.html'">Change Password</button> -->
+    </div>
+</body>
+</html>

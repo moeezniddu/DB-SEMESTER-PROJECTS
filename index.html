@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Scores</title>
+    <style>
+        
+        /* Navigation bar styles */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            padding: 10px 20px;
+        }
+
+        nav .logo img {
+            max-height: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        nav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        h2 {
+            margin-left: 80px;
+        }
+        .score-table {
+            width: 90%;
+            height: 10%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            color: #070707;
+            background-color: rgb(152, 198, 84);
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+        
+        .score-table th, .score-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .score-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .score-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .score-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .score-table .player-name {
+            font-weight: bold;
+            color: #0066cc;
+            font-size: 16px;
+        }
+        
+        .score-table .runs {
+            font-weight: bold;
+            color: #cc0000;
+            font-size: 12px;
+        }
+        .score-table .wickets {
+            font-weight: bold;
+            color: #cc0000;
+            font-size: 12px;
+        }
+        
+        .score-table caption {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .score-table .highlight {
+            background-color: #ffff99;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="#"><img src="psl_logo.png" alt="Logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="searchplayers.html">Players</a>
+            <a href="match_schedule.php">Match Schedule</a>
+            <a href="pointstable.php">Points Table</a>
+            <a href="Teams.html">Teams</a>
+            <a href="login.html">Login as Administrator</a>
+        </div>
+    </nav>
+    
+    <h2>Most Runs:</h2>
+    <div id="most-runs-output"></div>
+
+    <h2>Most Wickets:</h2>
+    <div id="most-wickets-output"></div>
+
+    <h2>Highest Strike Rate:</h2>
+    <div id="highest-strike-rate-output"></div>
+
+    <h2>Most Sixes:</h2>
+    <div id="most-sixes-output"></div>
+
+
+    <script>
+        // Create a function to fetch the "Most Runs" data
+        function fetchMostRunsData() {
+            fetch("highestrun.php")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("most-runs-output").innerHTML = data;
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+        }
+
+        // Create a function to fetch the "Most Wickets" data
+        function fetchMostWicketsData() {
+            fetch("mostwicket.php")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("most-wickets-output").innerHTML = data;
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+        }
+        function fetchHighestStrikeRateData() {
+        fetch("highest_strike_rate.php")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("highest-strike-rate-output").innerHTML = data;
+        })
+        .catch(error => {
+            console.log("Error:", error);
+        });
+}       // Create a function to fetch the data for players with most sixes
+function fetchMostSixesData() {
+    fetch("most_sixes.php")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("most-sixes-output").innerHTML = data;
+        })
+        .catch(error => {
+            console.log("Error:", error);
+        });
+}
+
+// Call the function to fetch the data when the page loads
+window.onload = function() {
+    fetchMostRunsData();
+    fetchMostWicketsData();
+    fetchHighestStrikeRateData();
+    fetchMostSixesData(); // Add this line
+};
+
+    </script>
+</body>
+</html>
